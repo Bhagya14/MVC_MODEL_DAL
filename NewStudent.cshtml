@@ -1,0 +1,108 @@
+﻿@model MVC_Model_DAL.Models.StudentModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewStudent</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/ bundles / jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
+
+
+</head>
+<body>
+    <div align="center">
+        @Html.Partial("ContactinfoPartialView")
+
+        @using (Html.BeginForm("NewStudent", "Student", FormMethod.Post,
+            new { @class = "container", @style = "text-align:left;width=50%",
+                @enctype ="multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>StudentModel</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.studentname, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.studentname, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.studentname, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.studentemailid, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.studentemailid, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.studentemailid, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.studentpassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.studentpassword, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.studentpassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.studentmobileno, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.studentmobileno, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.studentmobileno, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.studentcity, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.studentcity,ViewBag.cities as List<SelectListItem>, new { @class = "form-control" } )
+                        @Html.ValidationMessageFor(model => model.studentcity, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.studentgender, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <label class="form-control-static">Male: @Html.RadioButtonFor(model=>model.studentgender,"Male")</label>
+                        <label class="form-control-static">Female :@Html.RadioButtonFor(model=>model.studentgender,"Female")</label>
+                        @Html.ValidationMessageFor(model => model.studentgender, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.studentimagefile, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="studentimagefile" id="studentimagefile" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.studentimagefile, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="NewStudent" class="btn btn-default" />
+                        @Html.ActionLink("Login", "Login", "Student");
+                        <br />
+                        <label class="text-success">@ViewBag.msg</label>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+  
+</body>
+</html>

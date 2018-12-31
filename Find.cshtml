@@ -1,0 +1,90 @@
+﻿@model MVC_Model_DAL.Models.StudentModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Find</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
+
+
+</head>
+<body>
+    <div align="center">
+        <h4>StudentModel</h4>
+        <hr />
+        <dl class="dl-horizontal" style="width:50%;text-align:left;">
+            <dt>
+                @Html.DisplayNameFor(model => model.studentID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.studentID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.studentname)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.studentname)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.studentemailid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.studentemailid)
+            </dd>
+    
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.studentmobileno)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.studentmobileno)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.studentcity)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.studentcity)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.studentgender)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.studentgender)
+            </dd>
+    
+            <dt>
+                <img height="200px" width="250px" src=@Model.studentimageaddress />
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.studentimageaddress)
+            </dd>
+    
+        </dl>
+        @Html.ActionLink("Edit", "Edit", "Student", new { id=Model.studentID},null)
+        @Html.ActionLink("Delete","Delete","student",new { id=Model.studentID},null)
+
+    </div>
+
+</body>
+</html>
